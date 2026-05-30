@@ -14,17 +14,16 @@ const Header = ({ theme, onToggleTheme }) => {
   };
 
   return (
-    <header className="flex justify-between items-center py-4 px-6 border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
+    <header className="flex justify-between items-center p-4 border-b-2 border-gray-300 dark:border-gray-600">
       <div>
         <h1 className="text-2xl font-bold text-gray-800 dark:text-white m-0">Dashboard de Tareas</h1>
-        <p className="text-sm text-gray-500 dark:text-gray-400 m-0 capitalize">{formatDate(currentTime)}</p>
+        <p className="text-sm text-gray-600 dark:text-gray-400 m-0 capitalize">{formatDate(currentTime)}</p>
       </div>
       <button
         onClick={onToggleTheme}
-        className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors text-2xl"
-        title={theme === 'dark' ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+        className="px-4 py-2 border-2 border-gray-800 dark:border-white text-gray-800 dark:text-white font-bold"
       >
-        {theme === 'dark' ? '☀️' : '🌙'}
+        {theme === 'dark' ? 'Modo Claro' : 'Modo Oscuro'}
       </button>
     </header>
   );

@@ -48,25 +48,25 @@ function TaskForm({ onAddTask }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-6 p-6 border border-purple-200 dark:border-purple-800/30 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
+    <form onSubmit={handleSubmit} className="mb-6 p-6 border-2 border-gray-300 dark:border-gray-600">
       <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-4 m-0">Añadir nueva actividad</h3>
 
       {error && <p className="text-red-500 mb-4 font-bold text-sm">{error}</p>}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="mb-2 md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Título:</label>
-          <input type="text" name="title" value={formData.title} onChange={handleChange} required className="w-full p-2 border border-purple-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Título:</label>
+          <input type="text" name="title" value={formData.title} onChange={handleChange} required className="w-full p-2 border-2 border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white" />
         </div>
         
         <div className="mb-2 md:col-span-2">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Descripción:</label>
-          <textarea name="description" value={formData.description} onChange={handleChange} required className="w-full p-2 border border-purple-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" rows="2" />
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Descripción:</label>
+          <textarea name="description" value={formData.description} onChange={handleChange} required className="w-full p-2 border-2 border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white" rows="2" />
         </div>
         
         <div className="mb-2">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Urgencia:</label>
-          <select name="urgency" value={formData.urgency} onChange={handleChange} className="w-full p-2 border border-purple-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white">
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Urgencia:</label>
+          <select name="urgency" value={formData.urgency} onChange={handleChange} className="w-full p-2 border-2 border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white">
             <option value="Alto">Alto</option>
             <option value="Medio">Medio</option>
             <option value="Bajo">Bajo</option>
@@ -76,17 +76,17 @@ function TaskForm({ onAddTask }) {
         <div className="mb-2"></div>
         
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Fecha:</label>
-          <input type="date" name="date" min={todayStr} value={formData.date} onChange={handleChange} required className="w-full p-2 border border-purple-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Fecha:</label>
+          <input type="date" name="date" min={todayStr} value={formData.date} onChange={handleChange} required className="w-full p-2 border-2 border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white" />
         </div>
         
         <div className="mb-4">
-          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Hora:</label>
-          <input type="time" name="time" value={formData.time} onChange={handleChange} required className="w-full p-2 border border-purple-300 dark:border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+          <label className="block text-sm font-bold text-gray-700 dark:text-gray-300 mb-1">Hora:</label>
+          <input type="time" name="time" value={formData.time} onChange={handleChange} required className="w-full p-2 border-2 border-gray-300 dark:border-gray-600 bg-transparent text-gray-900 dark:text-white" />
         </div>
       </div>
       
-      <button type="submit" className="px-6 py-2 bg-purple-600 hover:bg-purple-700 text-white border-none rounded-md cursor-pointer transition-colors font-medium">
+      <button type="submit" className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold border-2 border-blue-600 cursor-pointer">
         Añadir Tarea
       </button>
     </form>

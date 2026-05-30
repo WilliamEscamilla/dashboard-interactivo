@@ -11,16 +11,18 @@ import './App.css';
 function App() {
   const [activeUser, setActiveUser] = useState(users[0]);
   const [theme, setTheme] = useState('light');
-  
+  const [activeTab, setActiveTab] = useState('Dashboard');
+
   // Custom hook encapsula lógica de tareas y filtros
-  const { 
-    filteredActivities, 
-    stats, 
-    statusFilter, 
-    setStatusFilter, 
-    urgencyFilter, 
-    setUrgencyFilter, 
-    addTask 
+  const {
+    filteredActivities,
+    stats,
+    statusFilter,
+    setStatusFilter,
+    urgencyFilter,
+    setUrgencyFilter,
+    addTask,
+    completeTask
   } = useTasks(activeUser.id);
 
   // Aplica clase .dark al body para Tailwind dark mode
@@ -37,30 +39,35 @@ function App() {
   };
 
   return (
-    <div className={`flex min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors ${theme}`}>
-      <Sidebar />
-      
+    <div className={`flex min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors ${theme}`}>
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+
       <main className="flex-1 flex flex-col w-full min-w-0">
         <Header theme={theme} onToggleTheme={toggleTheme} />
-        
+
         <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
           <div className="max-w-6xl mx-auto space-y-6">
-            <UserPanel 
-              users={users} 
-              activeUser={activeUser} 
-              onSelect={setActiveUser} 
+            <UserPanel
+              users={users}
+              activeUser={activeUser}
+              onSelect={setActiveUser}
             />
-            
-            <StatsPanel stats={stats} />
-            
-            <ActivityList
-              activities={filteredActivities}
-              statusFilter={statusFilter}
-              onStatusChange={setStatusFilter}
-              urgencyFilter={urgencyFilter}
-              onUrgencyChange={setUrgencyFilter}
-              onAddTask={addTask}
-            />
+
+            {(activeTab === 'Dashboard' || activeTab === 'Estadisticas') && (
+              <StatsPanel stats={stats} />
+            )}
+
+            {(activeTab === 'Dashboard' || activeTab === 'Tareas') && (
+              <ActivityList
+                activities={filteredActivities}
+                statusFilter={statusFilter}
+                onStatusChange={setStatusFilter}
+                urgencyFilter={urgencyFilter}
+                onUrgencyChange={setUrgencyFilter}
+                onAddTask={addTask}
+                onCompleteTask={completeTask}
+              />
+            )}
           </div>
         </div>
       </main>

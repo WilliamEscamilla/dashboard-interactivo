@@ -26,5 +26,11 @@ export function useTasks(activeUserId) {
   const addTask = (newTask) =>
     setActivities(prev => [...prev, { ...newTask, id: Date.now(), userId: activeUserId, status: 'Pendiente' }]);
 
-  return { filteredActivities, stats, statusFilter, setStatusFilter, urgencyFilter, setUrgencyFilter, addTask };
+  const completeTask = (taskId) => {
+    setActivities(prev => prev.map(activity => 
+      activity.id === taskId ? { ...activity, status: 'Completada' } : activity
+    ));
+  };
+
+  return { filteredActivities, stats, statusFilter, setStatusFilter, urgencyFilter, setUrgencyFilter, addTask, completeTask };
 }

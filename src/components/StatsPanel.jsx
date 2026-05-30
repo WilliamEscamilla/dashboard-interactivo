@@ -7,20 +7,17 @@ const StatsPanel = React.memo(({ stats }) => {
       <Card
         title="Total de Tareas"
         value={stats.total}
-        icon="📋"
-        color="border-blue-500"
+        color="border-blue-600"
       />
       <Card
         title="Tareas Pendientes"
         value={stats.pendiente}
-        icon="⏳"
-        color="border-yellow-500"
+        color="border-yellow-600"
       />
       <Card
         title="Tareas Completadas"
         value={stats.completada}
-        icon="✅"
-        color="border-green-500"
+        color="border-green-600"
       />
     </section>
   );
