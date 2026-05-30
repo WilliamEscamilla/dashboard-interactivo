@@ -1,16 +1,21 @@
-# React + Vite
+# Actividad de Aprendizaje 3 - Dashboard interactivo básico
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Estructura decarpetas
+src/
+├── App.jsx           
+├── components/
+    ├── Sidebar.jsx       
+    ├── Header.jsx        
+    ├── Card.jsx          
+    ├── UserPanel.jsx     
+    ├── StatsPanel.jsx    
+    ├── ActivityList.jsx
+    └──ActivityForm.jsx
 
-Currently, two official plugins are available:
+## ActivityList.jsx
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Para la lista de actividades, hice una lista reutilizable que recibe como parámetros el título y la lista del useState en App.jsx y del formulario de ActivityForm.jsx. La lista muestra el título de la actividad, la urgencia, el estado, la fecha, la hora y un color dependiendo de la urgencia.
 
-## React Compiler
+## ActivityForm.jsx
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+El formulario recibe la función handleAddActivity de App.jsx y un useState para manejar los datos del formulario. Utilicé validaciones para que no se puedan añadir fechas en el pasado y para que los campos obligatorios no estén vacíos.
