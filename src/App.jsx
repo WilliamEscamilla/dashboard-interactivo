@@ -1,32 +1,11 @@
 import { useState } from 'react';
 import ActivityList from './components/ActivityList.jsx'
 import ActivityForm from './components/ActivityForm.jsx'
+import { initialActivities } from './data/data.js'
 
 function App() {
 
-  const [activities, setActivities] = useState([
-    {
-      title: 'Sacar la basura',
-      urgency: 'Alto',
-      status: 'Pendiente',
-      date: '2026-06-15',
-      time: '09:30'
-    },
-    {
-      title: 'Lavar la ropa',
-      urgency: 'Medio',
-      status: 'Pendiente',
-      date: '2026-06-02',
-      time: '14:30'
-    },
-    {
-      title: 'Hacer la cama',
-      urgency: 'Bajo',
-      status: 'Realizado',
-      date: '2026-05-30',
-      time: '07:00'
-    }
-  ]);
+  const [activities, setActivities] = useState(initialActivities);
 
   const handleAddActivity = (newActivity) => {
     setActivities([...activities, newActivity]);
