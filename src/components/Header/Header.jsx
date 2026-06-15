@@ -1,0 +1,30 @@
+import { useState, useEffect } from 'react';
+import HeaderView from './HeaderView';
+
+const Header = ({ theme, onToggleTheme }) => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => setCurrentTime(new Date()), 60000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const formattedDate = currentTime.toLocaleDateString('es-ES', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  return (
+    <HeaderView
+      formattedDate={formattedDate}
+      theme={theme}
+      onToggleTheme={onToggleTheme}
+    />
+  );
+};
+
+export default Header;
