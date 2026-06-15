@@ -1,7 +1,7 @@
-export const users = [
-  { id: 1, name: 'Gerardo Reyero', role: 'Actor' },
-  { id: 2, name: 'Mario Castañeda', role: 'Director' },
-  { id: 3, name: 'Sr. Pelo', role: 'Animador' },
+export const initialUsers = [
+  { id: 1, name: 'Gerardo Reyero', role: 'Actor', email: 'gerardo@correo.com', password: '123456' },
+  { id: 2, name: 'Mario Castañeda', role: 'Director', email: 'mario@correo.com', password: '123456' },
+  { id: 3, name: 'Sr. Pelo', role: 'Animador', email: 'sr.pelo@correo.com', password: '123456' },
 ];
 
 export const initialActivities = [

@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
+import { useAuth } from '../../context/AuthContext';
 import HeaderView from './HeaderView';
 
 const Header = ({ theme, onToggleTheme }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const { user, logout } = useAuth();
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 60000);
@@ -23,6 +25,8 @@ const Header = ({ theme, onToggleTheme }) => {
       formattedDate={formattedDate}
       theme={theme}
       onToggleTheme={onToggleTheme}
+      userEmail={user?.email}
+      onLogout={logout}
     />
   );
 };

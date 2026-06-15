@@ -1,4 +1,4 @@
-const Input = ({ id, name, type = 'text', value, onChange, placeholder, required = false, ...props }) => (
+const Input = ({ id, name, type = 'text', value, onChange, placeholder, required = false, disabled = false, ...props }) => (
   <input
     id={id}
     name={name}
@@ -7,7 +7,8 @@ const Input = ({ id, name, type = 'text', value, onChange, placeholder, required
     onChange={onChange}
     placeholder={placeholder}
     required={required}
-    className="w-full p-2 border-2 border-gray-300 dark:border-gray-600 bg-transparent text-gray-800 dark:text-white text-sm"
+    disabled={disabled}
+    className="w-full p-2 border-2 border-gray-300 dark:border-gray-600 bg-transparent text-gray-800 dark:text-white text-sm disabled:opacity-50 disabled:cursor-not-allowed"
     {...props}
   />
 );

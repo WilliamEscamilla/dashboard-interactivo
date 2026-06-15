@@ -1,16 +1,19 @@
 import { useState, useEffect } from 'react';
-import { users } from './data/data';
 import { useTasks } from './hooks/useTasks';
+import { useAuth } from './context/AuthContext';
 import Sidebar from './components/Sidebar/Sidebar';
 import Header from './components/Header/Header';
 import UserPanel from './components/UserPanel/UserPanel';
 import StatsPanel from './components/StatsPanel/StatsPanel';
 import ActivityList from './components/ActivityList/ActivityList';
+import Login from './components/Login/Login';
+import WelcomeModal from './components/WelcomeModal/WelcomeModal';
+import SwitchUserModal from './components/SwitchUserModal/SwitchUserModal';
 
 function App() {
-  const [activeUser, setActiveUser] = useState(users[0]);
-  const [theme, setTheme]           = useState('light');
-  const [activeTab, setActiveTab]   = useState('Dashboard');
+  const { loggedInUser } = useAuth();
+  const [theme, setTheme]         = useState('light');
+  const [activeTab, setActiveTab] = useState('Dashboard');
 
   const {
     filteredActivities,
@@ -21,7 +24,7 @@ function App() {
     setUrgencyFilter,
     addTask,
     completeTask,
-  } = useTasks(activeUser.id);
+  } = useTasks(loggedInUser?.id);
 
   useEffect(() => {
     if (theme === 'dark') {
@@ -33,8 +36,12 @@ function App() {
 
   const toggleTheme = () => setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
 
+  if (!loggedInUser) return <Login />;
+
   return (
     <div className={`flex min-h-screen bg-white dark:bg-black text-black dark:text-white transition-colors ${theme}`}>
+      <WelcomeModal />
+      <SwitchUserModal />
       <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
       <main className="flex-1 flex flex-col w-full min-w-0">
@@ -42,7 +49,7 @@ function App() {
 
         <div className="flex-1 overflow-y-auto p-4 md:p-6 lg:p-8">
           <div className="max-w-6xl mx-auto space-y-6">
-            <UserPanel users={users} activeUser={activeUser} onSelect={setActiveUser} />
+            <UserPanel />
 
             {(activeTab === 'Dashboard' || activeTab === 'Estadisticas') && (
               <StatsPanel stats={stats} />
